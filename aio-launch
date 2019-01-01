@@ -1,0 +1,8 @@
+#!/bin/sh
+
+gunicorn cabot.wsgi:application -b 0.0.0.0:$PORT &
+celery worker -A cabot &
+celery beat -A cabot &
+
+echo "Cabot container booted!"
+wait
