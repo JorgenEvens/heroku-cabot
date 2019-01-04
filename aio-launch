@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sed -i -r "s/days_to_retain=7/days_to_retain=${DATA_RETENTION_DAYS}/" /usr/local/lib/python2.7/site-packages/cabot/cabotapp/tasks.py
+
 gunicorn cabot.wsgi:application -b 0.0.0.0:$PORT &
 celery worker -A cabot &
 celery beat -A cabot &
