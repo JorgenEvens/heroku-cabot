@@ -1,5 +1,10 @@
 FROM cabotapp/cabot
 
+# CURL is missing in the image tagged `latest`
+RUN apk add --no-cache \
+        curl \
+        curl-dev
+
 RUN pip install --no-cache-dir \
         cabot-check-sslcert \
         cabot-alert-slack \
