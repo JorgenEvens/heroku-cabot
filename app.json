@@ -1,0 +1,57 @@
+{
+    "name": "Heroku Cabot",
+    "description": "Run Cabot on Heroku in a single dyno",
+    "repository": "https://github.com/jorgenevens/heroku-cabot",
+    "logo": "https://raw.githubusercontent.com/arachnys/cabot/master/cabot/static/arachnys/img/icon_96x96.png",
+    "keywords": ["cabot", "cabotapp", "monitoring", "uptime"],
+    "website": "https://cabotapp.com",
+    "success_url": "/",
+    "stack": "container",
+    "addons": ["heroku-postgresql:hobby-dev", "heroku-redis:hobby-dev"],
+    "env": {
+        "DATA_RETENTION_DAYS": {
+            "description": "The number of days to preserve data in the database",
+            "value": "1"
+        },
+        "DJANGO_SECRET_KEY": {
+            "description": "Django secret key",
+            "generator": "secret"
+        },
+        "ADMIN_EMAIL": {
+            "description": "Administrator e-mail",
+            "required": true
+        },
+        "CABOT_FROM_EMAIL": {
+            "description": "E-mail address of Cabot",
+            "required": true
+        },
+        "EMAIL_HOST": {
+            "description": "E-mail host to use",
+            "required": false
+        },
+        "EMAIL_PORT": {
+            "description": "E-mail host SMTP port",
+            "required": false,
+            "value": "25"
+        },
+        "EMAIL_USE_TLS": {
+            "description": "E-mail SMTP host should use TLS",
+            "required": false,
+            "value": "1"
+        },
+        "TIME_ZONE": {
+            "description": "Timezone to run Cabot in",
+            "required": false,
+            "value": "GMT"
+        },
+        "WWW_HTTP_HOST": {
+            "description": "Domain name on which Cabot will run",
+            "required": true
+        },
+        "WWW_SCHEME": {
+            "description": "Scheme to use for requests (https or http)",
+            "required": true,
+            "value": "https"
+        }
+    }
+}

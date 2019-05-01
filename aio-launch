@@ -2,6 +2,9 @@
 
 set -e
 
+# Use the REDIS_URL as cache if Celery is not configured
+export CELERY_BROKER_URL="${CELERY_BROKER_URL:-$REDIS_URL}"
+
 # Only retain data for `DATA_RETENTION_DAYS` days
 # This is a workaround that allows usage of upstream image
 sed -i -r "s/days_to_retain=7/days_to_retain=${DATA_RETENTION_DAYS:-7}/" /usr/local/lib/python2.7/site-packages/cabot/cabotapp/tasks.py
