@@ -1,4 +1,4 @@
-FROM cabotapp/cabot
+FROM cabotapp/cabot:0.11.16
 
 # CURL is missing in the image tagged `latest`
 RUN apk add --no-cache \
